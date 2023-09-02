@@ -1,0 +1,109 @@
+﻿@model WebApplication1.Models.ViewModels.ActivityVM
+
+@{ 
+    var title = "Create Activity";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @if (Model.Activity.ActivityID != 0)
+    {
+        title = "Edit Activity";
+<input asp-for="Activity.ActivityID" hidden />
+                }
+    
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">@title</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Activity.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Activity.Name" class="form-control" />
+                        <span asp-validation-for="Activity.Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Activity.Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Activity.Description" class="form-control" />
+                        <span asp-validation-for="Activity.Description" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ActivityImprovesSkill.SkillID"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="ActivityImprovesSkill.SkillID" asp-items="@Model.SkillSelectList" class="form-control">
+                            <option disabled selected>--Select Improved Skill--</option>
+                        </select>
+                        <span asp-validation-for="ActivityImprovesSkill.SkillID" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Activity_RSkill.SkillID"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Activity_RSkill.SkillID" asp-items="@Model.SkillSelectList" class="form-control">
+                            <option disabled selected>--Select Required Skill--</option>
+                        </select>
+                        @*<span asp-validation-for="Activity_RSkill.SkillID" class="text-danger"></span>*@
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Activity_RSkill.RequieredPoints"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Activity_RSkill.RequieredPoints" class="form-control" />
+                        <span asp-validation-for="Activity_RSkill.RequieredPoints" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            @if (Model.Activity.ActivityID != 0)
+                            {//Update
+                <input type="submit" class="btn btn-info w-100" value="Update" /> }
+            else
+            {//Create
+            <input type="submit" onclick="return validateinput()" class="btn btn-info w-100" value="Create" />}
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" /> }
+
+}

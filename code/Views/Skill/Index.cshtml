@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication1.Models.Skill>
+
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Skill List</h2>
+            </div>
+            <div class="col-6 text-right">
+                <a asp-action="Upsert" class="btn btn-primary">
+                    Create New Skill
+                </a>
+            </div>
+        </div>
+
+
+        <br /><br />
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead style="background-color: white">
+                    <tr>
+                        <th class="text-blue">
+                            Skill Name
+                        </th>
+                        <th class="text-blue">
+                            Skill Description
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var obj in Model)
+                    {
+                        <tr style="background-color: whitesmoke; 
+                                opacity: 60%;">
+                            <td width="50%" style="color: black;">@obj.Name</td>
+                            <td width="30%" style="color:black;">@obj.Description</td>
+                            <td class="text-center">
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-route-Id="@obj.SkillID" asp-action="Upsert" class="btn btn-primary mx-2">
+                                        <i class="fas fa-edit">Edit</i>
+                                    </a>
+                                    <a asp-route-Id="@obj.SkillID" asp-action="Delete" class="btn btn-danger mx-2">
+                                        <i class="far fa-trash-alt">Delete</i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+                <p>No Skill exists.</p>
+        }
+    </div>

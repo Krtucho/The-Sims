@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.Models.Sim>
+
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">The sims with the greatest mastery in this Profession</h2>
+        </div>
+
+    </div>
+
+
+    <br /><br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead thead style="background-color: white">
+                <tr>
+                    <th class="text-blue">
+                        Sim Name
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr style="background-color: whitesmoke; 
+                                opacity: 60%;">
+                        <td width="30%" style="color: black;">@obj.Name</td>
+                        @*<td class="text-center">
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-route-Id="@obj.ProfessionID" asp-action="Upsert" class="btn btn-primary mx-2">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-route-Id="@obj.ProfessionID" asp-action="Delete" class="btn btn-danger mx-2">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Sims exists with this Profession.</p>
+    }
+    <div class="form-group row">
+        <div class="col">
+            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+        </div>
+    </div>
+</div>

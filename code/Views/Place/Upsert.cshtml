@@ -1,0 +1,97 @@
+﻿@model WebApplication1.Models.ViewModels.PlaceVM
+
+@{ 
+    var title = "Create Place";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @if (Model.Place.PlaceID != 0)
+    {
+        title = "Edit Place";
+<input asp-for="Place.PlaceID" hidden />
+                }
+    
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">@title</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Place.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Place.Name" class="form-control" />
+                        <span asp-validation-for="Place.Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Place.Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Place.Description" class="form-control" />
+                        <span asp-validation-for="Place.Description" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ServicePlace.Cost"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ServicePlace.Cost" class="form-control" />
+                        <span asp-validation-for="ServicePlace.Cost" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Place.NeighborhoodID"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Place.NeighborhoodID" asp-items="@Model.NeighborhoodSelectList" class="form-control">
+                            <option disabled selected>--Select Neighborhood--</option>
+                        </select>
+                        <span asp-validation-for="Place.NeighborhoodID" class="text-danger"></span>
+                    </div>
+
+
+
+                    <div class="form-group row">
+                        <div class="col-8 offset-4 row">
+
+                            <div class="col">
+                                @if (Model.Place.PlaceID != 0)
+                                {//Update
+                    <input type="submit" class="btn btn-info w-100" value="Update" /> }
+                else
+                {//Create
+            <input type="submit" onclick="return validateinput()" class="btn btn-info w-100" value="Create" />}
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    @* Keep this empty *@
+                </div>
+            </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" /> }
+
+}

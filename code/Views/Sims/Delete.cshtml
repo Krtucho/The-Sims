@@ -1,0 +1,87 @@
+﻿@model WebApplication1.Models.Sim
+
+@*@{ var title = "Create Sim"; }*@
+
+<form method="post">
+    @*@if (Model.Sim.SimID != 0)
+    {
+        title = "Edit Sim";*@
+<input asp-for="SimID" hidden />
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Delete Product</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" disabled class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="LastName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="LastName" disabled class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="GenderID"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="GenderID" disabled class="form-control" />
+                        </div>
+                    </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="LifeStageID"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="LifeStageID" disabled class="form-control" />
+                        </div>
+                    </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="HomeID"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="HomeID" disabled class="form-control" />
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8 offset-4 row">
+
+                            <div class="col">
+                                <button type="submit" class="btn btn-danger w-100"> Delete</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

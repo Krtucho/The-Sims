@@ -1,0 +1,80 @@
+﻿@model WebApplication1.Models.ViewModels.Traveler_MissionVM
+
+@{ var title = "Make Mission"; }
+
+<form method="post" enctype="multipart/form-data">
+    @if (@Model.Sim.SimID != 0)
+    {
+        title = "Make Mission";
+<input asp-for="@Model.Sim.SimID" hidden /> } @*<input asp-for="Profession.ProfessionID" hidden />*@
+
+<div class="border p-3">
+
+    <div class="form-group row">
+        <h2 class="text-info pl-3">@title</h2>
+    </div>
+    @if (Model.MissionSelectList != null && Model.MissionSelectList.Count() > 0)
+    {
+<div class="row">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Sim.Name"></label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Sim.Name" class="form-control" disabled />
+                <span asp-validation-for="Sim.Name" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-4">
+                <label asp-for="Traveler_Mission_Date.MissionID"></label>
+            </div>
+            <div class="col-8">
+                <select asp-for="Traveler_Mission_Date.MissionID" asp-items="@Model.MissionSelectList" class="form-control">
+                    <option disabled selected>--Select Mission--</option>
+                </select>
+                <span asp-validation-for="Traveler_Mission_Date.MissionID" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-8 offset-4 row">
+
+                <div class="col">
+                    @*@if (Model.Traveler.SimID != 0)
+                                        {//Update
+                            <input type="submit" class="btn btn-info w-100" value="Update" /> }
+                        else
+                        {*@//Create
+                    <input type="submit" onclick="return validateinput()" class="btn btn-info w-100" value="Create" />
+                    @*}*@
+                </div>
+                <div class="col">
+                    <a asp-route-Id="@Model.Sim.SimID" asp-action="TravelerIndex" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        @* Keep this empty *@
+    </div>
+</div> }
+else
+{
+<p>There is no missions on this world player can afford or make.</p>
+                <div class="col">
+                    <a asp-route-Id="@Model.Sim.SimID" asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                </div>}
+</div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" /> }
+
+}

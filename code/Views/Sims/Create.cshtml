@@ -1,0 +1,87 @@
+﻿@model WebApplication1.Models.Sim
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Add Sim</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="LastName"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row" hidden>
+                    @*hidden = oculto*@
+                    <div class="col-4">
+                        <label asp-for="Balance"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Balance" class="form-control" value="20000" />
+                    </div>
+
+                </div>
+                @*<div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Level"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Level" class="form-control" />
+                    </div>
+
+                </div>*@
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="HomeID"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="HomeID" class="form-control" />
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="GenderID"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="GenderID" asp-items="ViewBag.GenderDropdown" class="form-control">
+                            <option selected>--Select Gender--</option>
+                        </select>
+                        <span asp-validation-for="GenderID" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Create" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+</form>
+

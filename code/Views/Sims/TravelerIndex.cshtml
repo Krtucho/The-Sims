@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication1.Models.Relations.Traveler>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Travel's List</h2>
+        </div>
+        <div class="col-5 text-right">
+            <a asp-route-Id="@ViewBag.SimID" asp-action="TravelerUpsert" class="btn btn-primary">
+                Create New Travel
+            </a>
+        </div>
+        @if (ViewBag.IsTraveling)
+        {
+            <div class="col-1 text-right">
+                <a asp-route-Id="@ViewBag.SimID" asp-action="MissionIndex" class="btn btn-primary">
+                    Mission
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="col-1 text-right">
+                <a asp-route-Id="@ViewBag.SimID" asp-action="MissionIndex" class="btn btn-primary">
+                    Mission
+                </a>
+            </div>
+            @*<div class="col-6 text-right">
+                    <h3 asp-route-Id="@ViewBag.SimID" asp-action="TravelerUpsert" class="text-secondary" style="color: blue !important;">There is no mission...Sim is not Traveling</h3>
+                </div>*@
+        }
+    </div>
+
+
+    <br /><br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead style="background-color: white">
+                <tr>
+                    <th class="text-blue">
+                        World
+                    </th>
+                    <th class="text-blue">
+                        Date
+                    </th>
+                    @*<th>
+
+                        </th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr style="background-color: whitesmoke; 
+                                opacity: 60%;">
+                        <td width="50%" style="color: black;">@ViewBag.World[obj.WorldID].Name</td>
+                        <td width="30%" style="color: black;">@obj.DateID</td>
+                        @*<td class="text-center">
+                                <div class="w-75 btn-group" role="group">
+                                    <a asp-route-Id="@obj.SimID" asp-action="TravelerUpsert" class="btn btn-primary mx-2">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a asp-route-Id="@obj.SimID" asp-action="Delete" class="btn btn-danger mx-2">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
+                                </div>
+                            </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="col-1" style="margin-top:10px;">
+            <a asp-route-Id="@ViewBag.SimID" asp-action="Profile" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+
+        </div>
+    }
+    else
+    {
+        <p>No Profession exists.</p>
+    }
+</div>

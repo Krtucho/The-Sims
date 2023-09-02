@@ -1,0 +1,122 @@
+﻿@model WebApplication1.Models.ViewModels.SimProfileVM
+
+@{ var title = "Sim Profile"; }
+
+<form method="post" enctype="multipart/form-data">
+<input asp-for="Sim.SimID" hidden />
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">@title</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+
+                        @*<label asp-for="Sim.Name">Sim.Name</label>*@
+                        <input asp-for="Sim.Name" disabled />
+                    </div>
+                    <div class="col-8">
+                        <!--<label asp-for="Sim.LastName">-->@*Sim.LastName*@<!--</label>-->
+                        <input asp-for="Sim.LastName" disabled />
+                        @*<span asp-validation-for="Sim.Name" class="text-danger"></span>*@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        Etapa de Vida:
+                    </div>
+                    <div class="col-8">
+                        @*<label asp-for="Sim.LifeStageID"></label>*@
+                        <input asp-for="Sim.LifeStageID" disabled />
+                        @*<input asp-for="Sim.LastName" class="form-control" />
+                <span asp-validation-for="Sim.LastName" class="text-danger"></span>*@
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        @*<label asp-for="Sim.GenderID"></label>*@
+                        Genero:
+                    </div>
+                    <div class="col-8">
+                        @*<label asp-for="Sim.GenderID"></label>*@
+                        <input asp-for="Sim.GenderID" disabled />
+                        @*<input asp-for="Sim.GenderID" disabled class="form-control" />*@
+                    </div>
+
+                </div>
+                <div class="col-8">
+                    <div class="form-group row">
+                        <div class="col-4">
+                            Tiene
+                            @*<label asp-for="Sim.Name">Sim.Name</label>*@
+                            @*<input asp-for="Sim.Name" disabled />*@
+                        </div>
+                        <div class="col-8">
+                            <!--<label asp-for="Sim.LastName">-->@*Sim.LastName*@<!--</label>-->
+                            <input asp-for="Sim.Balance" disabled />
+                            @*<span asp-validation-for="Sim.Name" class="text-danger"></span>*@
+                            Simoleones
+                        </div>
+
+                    </div>
+                    @*<div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Sim.LifeStageID"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="Sim.LifeStageID" asp-items="@Model.LifeStageSelectList" class="form-control">
+                        <option disabled selected>--Select LifeStage--</option>
+                    </select>
+                    <span asp-validation-for="Sim.LifeStageID" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Sim.HomeID"></label>
+                </div>
+                <div class="col-8">
+                    <select asp-for="Sim.HomeID" asp-items="@Model.HomeSelectList" class="form-control">
+                        <option disabled selected>--Select Home--</option>
+                    </select>
+                    <span asp-validation-for="Sim.HomeID" class="text-danger"></span>
+                </div>
+
+            </div>*@
+                    <div class="form-group row">
+                        <div class="form-group row">
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="SimProfession" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Profession</a></div> @*Profession*@
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="SimPet" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Pet</a></div> @*Pet*@
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="SimNeighborhood" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Neighborhood</a></div> @*Neighborhood*@
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="SimSkill" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Skill</a></div> @*Skill*@
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="SimActivity" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Activities</a></div> @*Activity*@
+                            <div class="col"><a asp-route-Id="@Model.Sim.SimID" asp-action="TravelerIndex" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Travel</a></div> @*Travel*@
+
+                            <div class="col-8" style="margin-top:10px;">
+                                <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-4">
+                    @* Keep this empty *@
+                </div>
+            </div>
+    </div>
+        </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" />
+    }
+
+}

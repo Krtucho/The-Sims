@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Models.Relations.Mission_Requieres_Skill>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Mission Requires Skill List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="MissionRSkillUpsert" class="btn btn-primary">
+                Create New Mission Requires Skill
+            </a>
+        </div>
+    </div>
+
+
+    <br /><br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Mission Name
+                    </th>
+                    <th>
+                        Required Skill
+                    </th>
+                    <th style="
+                            color: floralwhite;
+                        ">
+                        Required Points
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var obj in Model)
+                {
+                    <tr>
+                        <td width="50%" style="color: black;">@ViewBag.mission[obj.MissionID].Name</td>
+                        <td width="30%" style="color:aliceblue;">@ViewBag.skill[obj.SkillID].Name</td>
+                        <td width="30%" style="color:aliceblue;">@obj.RequieredPoint</td>
+                        @*<td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-route-Id="@obj.MissionID.ToString() + " asp-action="MissionRSkillUpsert" class="btn btn-primary mx-2">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-route-Id="@obj.MissionID" asp-action="Delete" class="btn btn-danger mx-2">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No MissionRSkill exists.</p>
+    }
+</div>

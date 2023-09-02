@@ -1,0 +1,96 @@
+﻿@model WebApplication1.Models.ViewModels.ProfessionVM
+
+@{ 
+    var title = "Create Profession";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @if (Model.Profession.ProfessionID != 0)
+    {
+        title = "Edit Profession";
+<input asp-for="Profession.ProfessionID" hidden />
+                }
+    
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">@title</h2>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Profession.Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Profession.Name" class="form-control" />
+                        <span asp-validation-for="Profession.Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Profession.BasicSalary"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Profession.BasicSalary" class="form-control" />
+                        <span asp-validation-for="Profession.BasicSalary" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Profession_Skill.SkillID"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="Profession_Skill.SkillID" asp-items="@Model.SkillSelectList" class="form-control">
+                            <option disabled selected>--Select Improved Skill--</option>
+                        </select>
+                        <span asp-validation-for="Profession_Skill.SkillID" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Profession_Skill.ScoreLevel"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Profession_Skill.ScoreLevel" class="form-control" />
+                        <span asp-validation-for="Profession_Skill.ScoreLevel" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            @if (Model.Profession.ProfessionID != 0)
+                            {//Update
+                <input type="submit" class="btn btn-info w-100" value="Update" /> }
+            else
+            {//Create
+            <input type="submit" onclick="return validateinput()" class="btn btn-info w-100" value="Create" />}
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section Scripts{
+
+    @{
+                        <partial name="_ValidationScriptsPartial" /> }
+
+}
