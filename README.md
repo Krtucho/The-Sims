@@ -1,8 +1,8 @@
 # The-Sims
 
 ## Authors:
-Carlos Carret @Krtucho
-Daniela Rodríguez @Daroce1012
+Carlos Carret [@Krtucho](https://github.com/Krtucho)
+Daniela Rodríguez [@Daroce1012](https://github.com/Daroce1012)
 
 ## Database Systems Subject Project
 ### Keywords:
